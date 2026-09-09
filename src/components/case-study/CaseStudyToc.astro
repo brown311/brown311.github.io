@@ -1,0 +1,40 @@
+---
+interface Props {
+	items: { href: string; label: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav class="toc" aria-label="Case study sections">
+	{items.map((item) => <a href={item.href}>{item.label}</a>)}
+</nav>
+
+<style>
+	.toc {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+		padding: var(--space-6) var(--page-gutter);
+		border-top: 2px solid var(--color-light);
+		border-bottom: 2px solid var(--color-light);
+	}
+
+	.toc a {
+		align-self: flex-start;
+		padding: 0 4px;
+		border: 2px solid transparent;
+		outline: none;
+		color: var(--color-text-on-dark);
+		text-decoration: underline;
+	}
+
+	.toc a:hover {
+		border-color: var(--color-light);
+	}
+
+	.toc a:focus-visible {
+		outline: 2px dashed var(--color-light);
+		outline-offset: 4px;
+	}
+</style>

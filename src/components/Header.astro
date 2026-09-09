@@ -1,0 +1,128 @@
+---
+import BlueButton from './BlueButton.astro';
+
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+	{ href: '/', label: 'Home' },
+	{ href: '/about', label: 'About' },
+];
+
+function isActive(href: string) {
+	if (href === '/') return currentPath === '/';
+	return currentPath === href || currentPath.startsWith(`${href}/`);
+}
+---
+
+<header class="site-header">
+	<a class="wordmark" href="/">Ali&rsquo;s Portfolio</a>
+	<nav>
+		<ul>
+			{
+				navItems.map((item) => (
+					<li>
+						<a class:list={['nav-btn', { 'is-active': isActive(item.href) }]} href={item.href}>
+							{item.label}
+						</a>
+					</li>
+				))
+			}
+			<li>
+				<a class="nav-btn" href="https://www.linkedin.com/in/ali-brown-971836146/" target="_blank" rel="noopener noreferrer">
+					LinkedIn
+					<img src="/icons/arrow-up-right-square.svg" alt="" aria-hidden="true" />
+					<span class="sr-only">(opens in new tab)</span>
+				</a>
+			</li>
+			<li><BlueButton href="/contact">Contact</BlueButton></li>
+		</ul>
+	</nav>
+</header>
+
+<style>
+	.site-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: var(--space-5) var(--page-gutter);
+		border-bottom: 2px solid var(--color-light);
+		background: var(--color-bg);
+	}
+
+	.wordmark {
+		padding: 0.75rem var(--space-4);
+		border: 2px solid transparent;
+		outline: none;
+		color: var(--color-text-on-dark);
+		text-decoration: none;
+		font-size: var(--text-h2-size);
+		font-weight: var(--text-h2-weight);
+	}
+
+	.wordmark:hover {
+		border-color: var(--color-light);
+	}
+
+	.wordmark:focus-visible {
+		outline: 2px dashed var(--color-light);
+		outline-offset: 4px;
+	}
+
+	nav > ul {
+		display: flex;
+		gap: var(--space-3);
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.nav-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-2);
+		padding: 0.75rem var(--space-4); /* 12px vertical per Figma spec — outside the 4/8/16px scale */
+		border: 2px solid transparent;
+		border-radius: 0;
+		outline: none;
+		background: transparent;
+		color: var(--color-text-on-dark);
+		font-weight: var(--text-body-weight-bold);
+		font-size: var(--text-body-size);
+		font-family: inherit;
+		text-decoration: none;
+	}
+
+	.nav-btn img {
+		width: 24px;
+		height: 24px;
+	}
+
+	/* Mouse hover: fills white with black text (border matches bg, so it's
+	   invisible on its own — it only matters once focus adds the dashed ring). */
+	.nav-btn:hover {
+		background: var(--color-light);
+		border-color: var(--color-light);
+		color: var(--color-text-on-light);
+	}
+
+	/* Icon is a solid white SVG; inverting it flips it to match the black text. */
+	.nav-btn:hover img {
+		filter: invert(1);
+	}
+
+	/* Keyboard focus: same dashed-ring-with-gap treatment as every other
+	   button (Blue/Black), so the focus indicator reads consistently
+	   everywhere. Works whether or not :hover is also active. */
+	.nav-btn:focus-visible {
+		outline: 2px dashed var(--color-light);
+		outline-offset: 4px;
+	}
+
+	/* Current-page indicator — not a Figma interaction state, kept distinct
+	   from :hover/:focus-visible above so it doesn't inherit the fill/invert. */
+	.nav-btn.is-active {
+		border-style: solid;
+		border-color: var(--color-light);
+	}
+</style>

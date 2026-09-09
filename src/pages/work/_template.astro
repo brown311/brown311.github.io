@@ -1,0 +1,240 @@
+---
+/*
+ * CASE STUDY TEMPLATE
+ * ===================
+ * The leading underscore keeps Astro from turning this file into a page.
+ *
+ * To add a new case study:
+ *
+ *  1. Copy this file to `src/pages/work/<your-slug>.astro`
+ *     (drop the underscore — the filename becomes the URL, e.g.
+ *     `src/pages/work/acme-redesign.astro` -> /work/acme-redesign)
+ *
+ *  2. Create `src/content/case-studies/<your-slug>.md` with matching
+ *     frontmatter. That file is what renders the card on the homepage —
+ *     see google-maps-accessibility.md for a filled-in example:
+ *
+ *       title: Full case study title
+ *       year: 2026
+ *       category: Freelance
+ *       tags: [research, ui]
+ *       summary: One or two sentences, shown on the card.
+ *       ctaLabel: Open <name> Case Study
+ *       coverImage: /images/case-studies/<slug>-cover.png   # optional
+ *       order: 0        # lower numbers appear first
+ *
+ *  3. Put images/video in `public/images/case-studies/<your-slug>/`
+ *     and `public/videos/case-studies/<your-slug>/`.
+ *
+ *  4. Delete any sections below you don't need, and duplicate the ones
+ *     you need more of. Every section is independent.
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlueButton from '../../components/BlueButton.astro';
+import CaseStudyHero from '../../components/case-study/CaseStudyHero.astro';
+import CaseStudyToc from '../../components/case-study/CaseStudyToc.astro';
+import SectionDivider from '../../components/case-study/SectionDivider.astro';
+import FeatureCard from '../../components/case-study/FeatureCard.astro';
+import InsightCard from '../../components/case-study/InsightCard.astro';
+import CalloutBox from '../../components/case-study/CalloutBox.astro';
+import '../../styles/case-study.css';
+
+// Point these at your own asset folders.
+const IMG = '/images/case-studies/TEMPLATE';
+const VIDEO = '/videos/case-studies/TEMPLATE';
+
+// Each entry needs a matching `id` on a <SectionDivider /> below.
+const tocItems = [
+	{ href: '#introduction', label: 'Introduction' },
+	{ href: '#process', label: 'Process' },
+	{ href: '#outcome', label: 'Outcome' },
+];
+---
+
+<BaseLayout title="Case study title" description="One sentence describing this case study.">
+	<article class="cs-page">
+		{/* ---------- HERO: title, summary quote, project facts, media ---------- */}
+		<CaseStudyHero
+			title="Case study title"
+			summary="One sentence describing what this project set out to do."
+			meta={[
+				{ label: 'Role', value: 'UX Researcher and Designer' },
+				{ label: 'Timeline', value: '8 weeks' },
+				{ label: 'Project Type', value: 'Freelance' },
+				{ label: 'Team Type', value: 'Individual Project' },
+				{ label: 'Year', value: '2026' },
+			]}
+		>
+			{/* Swap for <img src={`${IMG}/hero.png`} alt="..." /> if there's no video. */}
+			<Fragment slot="media">
+				<video controls poster={`${IMG}/hero-poster.jpg`}>
+					<source src={`${VIDEO}/hero.mp4`} type="video/mp4" />
+				</video>
+			</Fragment>
+		</CaseStudyHero>
+
+		{/* ---------- TABLE OF CONTENTS ---------- */}
+		<CaseStudyToc items={tocItems} />
+
+		{/* ---------- SECTION: Introduction ---------- */}
+		<SectionDivider id="introduction" title="Introduction" />
+
+		{/* Two columns: copy on the left, image on the right. */}
+		<section class="cs-two-col">
+			<div class="cs-two-col-text">
+				<h3>Sub-heading for this section</h3>
+				<p>A paragraph of context explaining the starting point.</p>
+				<div>
+					<p class="cs-bold">A bolded lead-in for a list:</p>
+					<ul>
+						<li>First point</li>
+						<li>Second point</li>
+						<li>Third point</li>
+					</ul>
+				</div>
+			</div>
+			<div class="cs-two-col-media">
+				<img class="cs-rounded" src={`${IMG}/context.png`} alt="" />
+			</div>
+		</section>
+
+		{/* Sky-blue band, for the "why this matters" argument. */}
+		<section class="cs-highlight">
+			<h3>Why this matters</h3>
+			<p class="cs-bold cs-h4-size">A short, punchy claim.</p>
+			<p>The paragraph backing up that claim with evidence or numbers.</p>
+		</section>
+
+		{/* ---------- SECTION: Outcome / features ---------- */}
+		<SectionDivider id="outcome" title="Outcome" />
+
+		<section class="cs-stack">
+			<h2>What I made</h2>
+
+			{/* One card per feature. `centerText` vertically centres the copy. */}
+			<FeatureCard title="Feature name" subtitle="One line describing the feature" centerText>
+				<ul>
+					<li>Supporting detail</li>
+					<li>Supporting detail</li>
+				</ul>
+				<Fragment slot="image">
+					<video controls poster={`${IMG}/feature-poster.jpg`}>
+						<source src={`${VIDEO}/feature.mp4`} type="video/mp4" />
+					</video>
+				</Fragment>
+			</FeatureCard>
+
+			{/* A card can hold several images side by side instead of one. */}
+			<FeatureCard title="Another feature" centerText>
+				<ul>
+					<li>Supporting detail</li>
+				</ul>
+				<Fragment slot="image">
+					<img src={`${IMG}/shot-1.png`} alt="" />
+					<img src={`${IMG}/shot-2.png`} alt="" />
+					<img src={`${IMG}/shot-3.png`} alt="" />
+				</Fragment>
+			</FeatureCard>
+		</section>
+
+		{/* ---------- SECTION: Process ---------- */}
+		<SectionDivider id="process" title="Process" />
+
+		{/* Optional single intro line under a divider. */}
+		<p class="cs-section-intro">A sentence framing what this part of the process set out to answer.</p>
+
+		<section class="cs-two-col">
+			<div class="cs-two-col-text">
+				<h3>Research method</h3>
+				<p>How you ran it, and why you chose that approach.</p>
+			</div>
+			<div class="cs-two-col-media">
+				<img class="cs-rounded" src={`${IMG}/research.png`} alt="" />
+			</div>
+		</section>
+
+		{/* Key insights, stated first and then evidenced. */}
+		<section class="cs-stack cs-on-light">
+			<h2>Key insights</h2>
+			<p class="cs-h4-size">A line introducing how many insights came out of the research.</p>
+
+			<CalloutBox>
+				<p class="cs-bold cs-h3-size">The insight, stated as a full sentence.</p>
+			</CalloutBox>
+
+			{/* Supporting evidence: findings on the left, participant quotes on the right. */}
+			<div class="cs-row">
+				<ul class="cs-rule-list">
+					<li>A finding that supports the insight.</li>
+					<li>Another finding.</li>
+				</ul>
+				<div class="cs-quote-list">
+					<p>&ldquo;A participant quote.&rdquo;</p>
+					<p>&ldquo;Another participant quote.&rdquo;</p>
+				</div>
+			</div>
+		</section>
+
+		{/* A row of images, e.g. personas or artefacts, plus a link to the full file. */}
+		<section class="cs-stack">
+			<h2>Personas and journeys</h2>
+			<p class="cs-h4-size">What you produced and why.</p>
+			<div class="cs-image-row">
+				<img src={`${IMG}/persona-1.png`} alt="Persona 1" />
+				<img src={`${IMG}/persona-2.png`} alt="Persona 2" />
+				<img src={`${IMG}/persona-3.png`} alt="Persona 3" />
+			</div>
+			<BlueButton href="https://example.com/personas.pdf" external>View personas PDF</BlueButton>
+		</section>
+
+		{/* Findings as cards; pair one with a quote using cs-row. */}
+		<section class="cs-stack cs-on-light">
+			<h2>What testing showed</h2>
+
+			<InsightCard title="A finding, phrased as a takeaway">
+				The explanation of what happened and what it means.
+			</InsightCard>
+
+			<div class="cs-row">
+				<InsightCard title="A second finding">The explanation.</InsightCard>
+				<p class="cs-quote">&ldquo;A quote that illustrates this finding.&rdquo;</p>
+			</div>
+		</section>
+
+		{/* Before/after results, with the headline number pulled out. */}
+		<section class="cs-stack">
+			<h2>Results</h2>
+			<div class="cs-row">
+				<CalloutBox stacked>
+					<p>The baseline result.</p>
+					<p class="cs-bold cs-h4-size">but&hellip; the improved result.</p>
+				</CalloutBox>
+				<p class="cs-quote">&ldquo;A quote backing up the result.&rdquo;</p>
+			</div>
+		</section>
+
+		{/* Link out to a live prototype. */}
+		<section class="cs-stack">
+			<FeatureCard title="Try the prototype for yourself" centerText>
+				<BlueButton href="https://example.com/prototype" external>View Figma prototype</BlueButton>
+				<Fragment slot="image">
+					<img src={`${IMG}/prototype.png`} alt="" />
+				</Fragment>
+			</FeatureCard>
+		</section>
+
+		{/* ---------- Closing ---------- */}
+		<section class="cs-stack">
+			<h2>Reflection</h2>
+			<InsightCard title="What you found hard, phrased honestly.">
+				What you learned from it and what you'd do differently.
+			</InsightCard>
+		</section>
+
+		<section class="cs-stack">
+			<h2>Next Steps</h2>
+			<InsightCard title="Where you'd take this next.">Why, and what it would unlock.</InsightCard>
+		</section>
+	</article>
+</BaseLayout>

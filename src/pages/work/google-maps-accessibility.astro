@@ -1,0 +1,702 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlueButton from '../../components/BlueButton.astro';
+import SectionDivider from '../../components/case-study/SectionDivider.astro';
+import FeatureCard from '../../components/case-study/FeatureCard.astro';
+import InsightCard from '../../components/case-study/InsightCard.astro';
+
+const IMG = '/images/case-studies/google-maps';
+const VIDEO = '/videos/case-studies/google-maps';
+---
+
+<BaseLayout
+	title="Google Maps Accessibility"
+	description="Optimizing Information About Accessibility on Google Maps — a UX research and design capstone project."
+>
+	<article class="case-study">
+		<header class="hero">
+			<div class="hero-text">
+				<h1>Optimizing Information About Accessibility on Google Maps</h1>
+				<blockquote class="pull-quote">
+					In this project I re-design how the &ldquo;Accessible Places&rdquo; feature provides information.
+				</blockquote>
+				<dl class="meta-list">
+					<div><dt>Role:</dt><dd>UX Researcher and Designer</dd></div>
+					<div><dt>Timeline:</dt><dd>2 Semesters</dd></div>
+					<div><dt>Project Type:</dt><dd>Capstone Project</dd></div>
+					<div><dt>Team Type:</dt><dd>Individual Project</dd></div>
+					<div><dt>Year:</dt><dd>2024</dd></div>
+				</dl>
+			</div>
+			<div class="hero-image">
+				<video controls poster={`${IMG}/hero-demo-poster.jpg`}>
+					<source src={`${VIDEO}/hero-demo.mp4`} type="video/mp4" />
+				</video>
+			</div>
+		</header>
+
+		<nav class="toc" aria-label="Case study sections">
+			<a href="#introduction">Introduction</a>
+			<a href="#end-result">End Result</a>
+			<a href="#defining-the-problem">Defining the Problem</a>
+			<a href="#evaluating-usability">Evaluating Google Maps Usability</a>
+			<a href="#prototyping">Prototyping</a>
+		</nav>
+
+		<SectionDivider id="introduction" title="Introduction" />
+
+		<section class="two-col">
+			<div class="two-col-text">
+				<h3>Current &ldquo;Accessible Places&rdquo; Feature</h3>
+				<p>Google Maps &ldquo;Accessible Places&rdquo; prioritizes information about accessibility when the user is searching or viewing a place.</p>
+				<div>
+					<p class="bold">But the feature is not sufficient for several reasons.</p>
+					<ul>
+						<li>Restaurants/venues provide incorrect information</li>
+						<li>There&rsquo;s inconsistent information between places</li>
+						<li>There&rsquo;s not enough description and information</li>
+						<li>Information is hard to find within the app</li>
+					</ul>
+				</div>
+			</div>
+			<div class="two-col-image">
+				<img src={`${IMG}/accessible-places-context.png`} alt="" />
+			</div>
+		</section>
+
+		<section class="highlight-block">
+			<h3>Why optimize this feature?</h3>
+			<p class="bold h4-size">We&rsquo;re far from reaching a day where every single space is accessible and inclusive</p>
+			<p>
+				That&rsquo;s why it&rsquo;s crucial to ensure accurate accessibility information is readily available. This empowers
+				people with disabilities to avoid dehumanizing experiences by steering clear of inaccessible environments.
+			</p>
+			<p class="bold h4-size">Google could help 16% of the population</p>
+			<p>
+				According to the World Health Organization an estimated 1.3 billion people experience significant disability. This
+				represents 16% of the world&rsquo;s population, or 1 in 6 of us. If Google could provide accurate and detailed
+				information about the accessibility of places they would be able to increase the number of users by helping 16% of
+				the population avoid inaccessibility.
+			</p>
+		</section>
+
+		<SectionDivider id="end-result" title="End Result" />
+
+		<section class="stack-section">
+			<h2>Features that Improve Google Map&rsquo;s &ldquo;Accessible Places&rdquo;</h2>
+
+			<FeatureCard title="Accessibility Page" subtitle="A dedicated page for accessibility information" centerText>
+				<ul>
+					<li>More in depth description about accessibility needs</li>
+					<li>Missing information placeholder</li>
+					<li>Categories of accessibility</li>
+				</ul>
+				<Fragment slot="image">
+					<video controls poster={`${IMG}/accessibility-page-poster.jpg`}>
+						<source src={`${VIDEO}/accessibility-page.mp4`} type="video/mp4" />
+					</video>
+				</Fragment>
+			</FeatureCard>
+
+			<FeatureCard title="Improved Usability" subtitle="Multiple ways of getting to accessible information" centerText>
+				<ul>
+					<li>Finding Accessibility Page made easy</li>
+					<li>An added Accessibility tab</li>
+					<li>Personalized Accessibility Hierarchy and Easy Access</li>
+				</ul>
+				<Fragment slot="image">
+					<video controls poster={`${IMG}/improved-usability-poster.jpg`}>
+						<source src={`${VIDEO}/improved-usability.mp4`} type="video/mp4" />
+					</video>
+				</Fragment>
+			</FeatureCard>
+
+			<FeatureCard title="Reviews" subtitle="Using reviews as a form of finding information" centerText>
+				<ul>
+					<li>Encouraging people with disabilities to write about their experiences</li>
+					<li>Sorting out irrelevant information by adding tags and headers to reviews</li>
+				</ul>
+				<Fragment slot="image">
+					<video controls poster={`${IMG}/reviews-poster.jpg`}>
+						<source src={`${VIDEO}/reviews.mp4`} type="video/mp4" />
+					</video>
+				</Fragment>
+			</FeatureCard>
+
+			<FeatureCard title="Alert the Restaurant" subtitle="Direct contact with restaurant" centerText>
+				<ul>
+					<li>Allowing people with disabilities to contact establishments which will encourage places to keep their accessibility information up to date</li>
+					<li>Intuitive flow that helps users contact places easily</li>
+				</ul>
+				<Fragment slot="image">
+					<video controls poster={`${IMG}/alert-the-restaurant-poster.jpg`}>
+						<source src={`${VIDEO}/alert-the-restaurant.mp4`} type="video/mp4" />
+					</video>
+				</Fragment>
+			</FeatureCard>
+		</section>
+
+		<SectionDivider id="defining-the-problem" title="Defining the Problem" />
+
+		<section class="two-col">
+			<div class="two-col-text">
+				<h3>Observational Research</h3>
+				<p>
+					Focusing on empathy, observation, personal engagement, and problem solving I used the POEMS framework to conduct
+					primary research.
+				</p>
+				<p>
+					POEMS is an observational research framework used to make sense of the elements present in context. It stands for
+					People, Objects, Environment, Messages and Services. I learned this method from the book &ldquo;101 Design
+					Methods: A Structured Approach for Driving Innovation in Your Organization&rdquo; by Vijay Kumar.
+				</p>
+				<p>Then analyzed the data using the DIKW Pyramid method.</p>
+			</div>
+			<div class="two-col-image">
+				<img class="rounded-image" src={`${IMG}/observational-research.png`} alt="" />
+			</div>
+		</section>
+
+		<section class="stack-section on-light">
+			<h2>2 Key Insights</h2>
+			<p class="h4-size">After analyzing the data I came up with 2 main insights that drove the next steps of my design process.</p>
+
+			<div class="callout-box">
+				<p class="bold h3-size">
+					Need to find a way to avoid people running into accessibility issues as much as possible because unfortunately
+					inaccessibility is inevitable, so if we can limit the amount of times disabled people plan to go to a place and
+					then end up having to leave or have a miserable time.
+				</p>
+			</div>
+
+			<div class="wisdom-row">
+				<ul class="wisdom-list">
+					<li>Running into accessibility issues is emotionally upsetting.</li>
+					<li>Largest issue is access to a bathroom.</li>
+					<li>Inaccessibility is everywhere and it is because people don&rsquo;t have a nuanced understanding what accessibility means.</li>
+					<li>Lack of people using Google to see if a place is accessible beforehand.</li>
+				</ul>
+				<div class="quote-list">
+					<p>&ldquo;It can be really frustrating, especially if you make plans with a large group or people you don&rsquo;t know very well.&rdquo;</p>
+					<p>&ldquo;the difference between someone being able to enjoy themselves at an establishment or leaving soaked in their own piss. And that&rsquo;s never fun.&rdquo;</p>
+					<p>&ldquo;I personally don&rsquo;t believe in blanket calling places &ldquo;accessible&rdquo;, as everyone has different needs and the majority of places aren&rsquo;t able to meet that.&rdquo;</p>
+				</div>
+			</div>
+
+			<div class="callout-box">
+				<p class="bold h3-size">
+					Can&rsquo;t count on establishments to understand accessibility needs. Need to figure out a way that helps
+					automate accessibility needs on google. Also have the opinions of disabled people.
+				</p>
+			</div>
+
+			<div class="wisdom-row">
+				<ul class="wisdom-list">
+					<li>Establishments don&rsquo;t know about accessibility needs - it&rsquo;s up to the disabled person.</li>
+					<li>It can be hard advocating to staff about accessibility needs.</li>
+				</ul>
+				<div class="quote-list">
+					<p>&ldquo;It is disturbing some of the stories they have told me about inaccessibility and accessibility features being implemented in such a way that it is actively dangerous.&rdquo;</p>
+					<p>&ldquo;&hellip;but the best thing any business can do is be honest about its provisions, and stay as open-minded as possible towards accommodations for all :)&rdquo;</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="stack-section">
+			<h2>Personas, user journeys and corrected user journeys</h2>
+			<p class="h4-size">
+				Using the information from my primary research I created 3 personas, 1 current user journey and 1 corrected user
+				journey for each.
+			</p>
+			<div class="persona-row">
+				<img class="persona persona-blue" src={`${IMG}/persona-1.png`} alt="Persona 1" />
+				<img class="persona persona-red" src={`${IMG}/persona-2.png`} alt="Persona 2" />
+				<img class="persona persona-green" src={`${IMG}/persona-3.png`} alt="Persona 3" />
+			</div>
+			<BlueButton href="https://cdn.prod.website-files.com/62fbed87c223ae57a3210361/6619ae2a1a74b31a18056f50_Personas.pdf" external>
+				View personas PDF
+			</BlueButton>
+		</section>
+
+		<SectionDivider id="evaluating-usability" title="Evaluating Google Maps Usability" />
+
+		<p class="section-intro">Before prototyping I wanted to identify the usability problems and successes of finding information about a restaurant on Google Maps.</p>
+
+		<section class="two-col">
+			<div class="two-col-text">
+				<h3>Usability Test Plan</h3>
+				<p class="bold h4-size">I categorized information into, easy to find, buried and can&rsquo;t be found.</p>
+				<p>
+					The test involved 5 participants who completed the test in the same order. They were shown 2 restaurants each
+					and were tasked with finding 3 pieces of information per restaurant (1 easy, 1 buried and 1 can&rsquo;t find).
+				</p>
+			</div>
+			<div class="two-col-image">
+				<img src={`${IMG}/two-restaurants.png`} alt="" />
+			</div>
+		</section>
+
+		<section class="stack-section on-light">
+			<h2>Insights from Usability Test</h2>
+			<InsightCard title="Important to have multiple ways of Finding Information">
+				Half of participants went to the about page because of the &ldquo;about tab&rdquo; and the other half clicked on the
+				&ldquo;about teaser&rdquo;.
+			</InsightCard>
+			<div class="insight-row">
+				<InsightCard title="Jumping to Conclusions.">When information was missing participants started to jump to conclusions.</InsightCard>
+				<p class="insight-quote">&ldquo;..it doesn&rsquo;t give all the information but I assume that wheelchair accessible parking lot being a no, would mean he couldn&rsquo;t enter the restaurant.&rdquo;</p>
+			</div>
+			<InsightCard title="The reviews are intuitive and user friendly compared to the about page.">
+				Most participants described looking for info in reviews as easy or pretty easy to find but most participants found
+				looking for info about page challenging.
+			</InsightCard>
+			<div class="insight-row">
+				<InsightCard title="Inconsistent Information is Confusing">4/5 participants find it confusing the lack of consistency of info.</InsightCard>
+				<p class="insight-quote">&ldquo;I mean yeah I think there&rsquo;s a good amount of information but these two restaurants, it&rsquo;s not uniform&rdquo;</p>
+			</div>
+		</section>
+
+		<section class="two-col">
+			<div class="two-col-text">
+				<h3>Card Sorting Test</h3>
+				<p>
+					From my observational research I created 17 categories of accessibility needs. I used a card sorting activity
+					to see where people would place these points of information in the current Google Maps design.
+				</p>
+				<p>70% of participants stated that different items could be placed in multiple categories.</p>
+			</div>
+			<div class="two-col-image">
+				<img class="rounded-image" src={`${IMG}/card-sorting-test.png`} alt="" />
+			</div>
+		</section>
+
+		<SectionDivider id="prototyping" title="Prototyping" />
+
+		<section class="two-col on-light">
+			<div class="two-col-text">
+				<h3>Placeholder for Missing Information</h3>
+				<p>
+					It is currently up to the establishment to provide information to Google. This means information about
+					accessibility is often not available. When information is not available it just doesn&rsquo;t show up in the
+					about page. That&rsquo;s what causes inconsistent information.
+				</p>
+				<p>For this prototype test I created 1 version of missing information with the current Google Maps design and 1 with my placeholder design.</p>
+			</div>
+			<div class="two-col-image">
+				<img src={`${IMG}/placeholder-missing-info.png`} alt="" />
+			</div>
+		</section>
+
+		<section class="stack-section">
+			<h2>Results</h2>
+			<div class="insight-row">
+				<div class="callout-box callout-box--outline">
+					<p>Without the placeholder 50% felt confident and 50% felt like they could have missed information.</p>
+					<p class="bold h4-size">but... with the placeholder 100% of the participants felt confident that there was missing information.</p>
+				</div>
+				<p class="insight-quote">&ldquo;Yes because it says missing information and then it lists exactly what is missing.&rdquo;</p>
+			</div>
+		</section>
+
+		<section class="two-col">
+			<div class="two-col-text">
+				<h3>Flowchart</h3>
+				<p>
+					Now I wanted to test more features that addressed insights from the usability test and observational research.
+					So I created a flowchart to show how all the features that would be implemented eventually.
+				</p>
+				<BlueButton href="https://cdn.prod.website-files.com/62fbed87c223ae57a3210361/66104e2a573ed02d372eda25_Feature%20List.pdf" external>
+					View Flowchart PDF
+				</BlueButton>
+			</div>
+			<div class="two-col-image">
+				<img class="rounded-image" src={`${IMG}/flow-chart.png`} alt="Feature implementation flow chart" />
+			</div>
+		</section>
+
+		<section class="stack-section">
+			<h2>Implementing Features</h2>
+			<p class="bold h4-size">
+				I split up testing all the features into 2 prototype tests so I could focus and get a clear understanding of each
+				one individually.
+			</p>
+
+			<FeatureCard title="First Set of Features Tested" centerText>
+				<ul>
+					<li>Multiple Access Points</li>
+					<li>Missing Information Placeholder</li>
+					<li>Alert the Restaurant about Information</li>
+					<li>Reviews as a Way of Finding Information</li>
+				</ul>
+				<Fragment slot="image">
+					<img src={`${IMG}/first-test-1.png`} alt="" />
+					<img src={`${IMG}/first-test-2.png`} alt="" />
+					<img src={`${IMG}/first-test-3.png`} alt="" />
+				</Fragment>
+			</FeatureCard>
+
+			<FeatureCard title="Second Set of Features Tested" centerText>
+				<ul>
+					<li>Prioritization of Accessibility</li>
+					<li>Accessibility Page</li>
+					<li>Review Page (Changes from the results of the 1st test)</li>
+				</ul>
+				<Fragment slot="image">
+					<img src={`${IMG}/second-test-1.png`} alt="" />
+					<img src={`${IMG}/second-test-2.png`} alt="" />
+					<img src={`${IMG}/second-test-3.png`} alt="" />
+				</Fragment>
+			</FeatureCard>
+		</section>
+
+		<section class="stack-section on-light">
+			<h2>Insights from both Prototype Tests</h2>
+			<InsightCard title="Information Hierarchy and Multiple Paths Creates Usability">
+				Information about accessibility should be prioritized on the page if the user has selected the &ldquo;accessible
+				places&rdquo; option. It&rsquo;s important to have multiple ways of going to the same location.
+			</InsightCard>
+			<InsightCard title="Alerting the Restaurant is User Friendly">
+				The user experience of alerting the restaurant is intuitive.
+			</InsightCard>
+			<InsightCard title="Users Find Information by Scrolling and Reading">
+				As soon as placeholder information was &ldquo;hidden&rdquo; in a dropdown, users described finding information
+				hard. People look for information by scrolling and reading headers, use this as a tool for an effective design.
+			</InsightCard>
+
+			<h2>Insights about Reviews</h2>
+			<InsightCard title="Reviews are a Solution for Missing Information">
+				Reviews are a solution to missing and/or incorrect information. Even though users described having to look
+				through reviews to find information as difficult and missing information frustrating and annoying, all users
+				found the correct information and felt confident in it.
+			</InsightCard>
+			<InsightCard title="Review Tags and Headings are Helpful">
+				Continue using tag design in reviews. After testing I realized that I could benefit from both tags and headings
+				when sorting reviews.
+			</InsightCard>
+		</section>
+
+		<section class="stack-section">
+			<FeatureCard title="Try my Prototype for Yourself" centerText>
+				<BlueButton
+					href="https://www.figma.com/proto/XKy7zaukMP3AJHK0yRAmea/Thesis--Final-Prototype?type=design&node-id=3201-803&viewport=8015%2C4572%2C0.39&t=M7e2VJ3A1wMdKtws-8&scaling=scale-down&starting-point-node-id=3201%3A803&hide-ui=1"
+					external
+				>
+					View Figma prototype
+				</BlueButton>
+				<Fragment slot="image"><img src={`${IMG}/prototype-mockup.png`} alt="" /></Fragment>
+			</FeatureCard>
+		</section>
+
+		<section class="stack-section">
+			<h2>Reflection</h2>
+
+			<InsightCard title="This is the first capstone project I&rsquo;ve ever done. It was intimidating thinking about how I would have to make a lot of decisions myself.">
+				Planning was probably my biggest ongoing challenge. In school I was always given timelines and instructions for
+				each step. Before doing this project, I thought schedules had to be followed exactly once they were made. So, I
+				felt a lot of pressure to make the perfect schedule, which I learned does not exist. So, I learned how to
+				structure my project to allow for &ldquo;risks.&rdquo; I came up with a system that allowed for changes. I used a
+				risk plan and factored those into the deadlines I made for myself. If I were to get sick, I was able to move the
+				deadline to a later date because the original deadline allowed for that.
+			</InsightCard>
+
+			<InsightCard title="In the beginning there were a few tests that I didn&rsquo;t properly plan.">
+				I thought that I would be able to figure it out as I went along, and that planning wasn&rsquo;t essential. Because
+				of my lack of planning, I didn&rsquo;t know what I was testing for, and I felt confused about the purpose of the
+				test. This caused me to start thinking of what I thought the insights &ldquo;should be.&rdquo; After conducting the
+				test, I had realized that I needed to remind myself what I was testing for. This made me make sure to always
+				create a structure before I did any sort of testing or research. I think there is a theme here for me — I was
+				intimidated by making plans. I tried to avoid it and it created more stress for me even though I thought it
+				would create less. This project has really helped me learn how to make efficient and realistic plans.
+			</InsightCard>
+
+			<InsightCard title="I learned that a designer&rsquo;s job is not only to delight users but also to bring value to the business.">
+				Throughout my years at school, I always thought about the user first — my goal is to help marginalized people
+				through design solutions. When I chose Google as the company I wanted to design for, I knew they had some
+				efforts in creating solutions for inaccessibility, but I didn&rsquo;t think much of it. As this project went on,
+				I realized that thinking about Google and the needs of Google as a company are important. The reason designers
+				can make designs and launch them all over the world is because of these companies. They go hand in hand and
+				that is something I truly hadn&rsquo;t considered.
+			</InsightCard>
+		</section>
+
+		<section class="stack-section">
+			<h2>Next Steps</h2>
+			<InsightCard title="Next for this project I would want to do more research on accessibility needs.">
+				Having detailed and accurate information about accessibility needs would take this design to the next level.
+				This would impact the headings in the accessibility page as well as the tags in the review page. I would
+				conduct interviews with people with different disabilities to find out what information is helpful, what
+				I&rsquo;m missing and what information is the most important.
+			</InsightCard>
+		</section>
+	</article>
+</BaseLayout>
+
+<style>
+	.case-study {
+		background: var(--color-bg);
+	}
+
+	.on-light {
+		background: var(--color-light);
+		color: var(--color-text-on-light);
+	}
+
+	.bold {
+		font-weight: var(--text-body-weight-bold);
+	}
+
+	.h4-size {
+		font-size: var(--text-h4-size);
+	}
+
+	.h3-size {
+		font-size: var(--text-h3-size);
+	}
+
+	/* Hero */
+	.hero {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: var(--space-5);
+		align-items: center;
+		padding: var(--space-4) var(--page-gutter);
+		background: var(--color-light);
+		color: var(--color-text-on-light);
+	}
+
+	.hero-text {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+	}
+
+	.pull-quote {
+		margin: 0;
+		padding: var(--space-3) 0 var(--space-3) var(--space-4);
+		border-left: 5px solid var(--color-accent-orange);
+		font-size: var(--text-h3-size);
+	}
+
+	.meta-list {
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+	}
+
+	.meta-list div {
+		display: flex;
+		gap: var(--space-1);
+	}
+
+	.meta-list dt {
+		font-weight: var(--text-body-weight-bold);
+	}
+
+	.meta-list dd {
+		margin: 0;
+	}
+
+	.hero-image video {
+		max-width: 100%;
+		max-height: 32rem;
+		object-fit: contain;
+		border-radius: 10px;
+	}
+
+	/* Table of contents */
+	.toc {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+		padding: var(--space-6) var(--page-gutter);
+		border-top: 2px solid var(--color-light);
+		border-bottom: 2px solid var(--color-light);
+	}
+
+	.toc a {
+		align-self: flex-start;
+		padding: 0 4px;
+		border: 2px solid transparent;
+		outline: none;
+		color: var(--color-text-on-dark);
+		text-decoration: underline;
+	}
+
+	.toc a:hover {
+		border-color: var(--color-light);
+	}
+
+	.toc a:focus-visible {
+		outline: 2px dashed var(--color-light);
+		outline-offset: 4px;
+	}
+
+	/* Two-column header pattern */
+	.two-col {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-5);
+		align-items: center;
+		padding: var(--space-6) var(--page-gutter);
+		border-bottom: 2px solid var(--color-light);
+	}
+
+	.two-col-text {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+	}
+
+	.two-col-text ul {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+		padding-left: var(--space-4);
+	}
+
+	.two-col-image {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.two-col-image img {
+		max-width: 100%;
+		max-height: 32rem;
+		object-fit: contain;
+	}
+
+	.two-col-image--multi {
+		gap: var(--space-3);
+	}
+
+	/* Sky-blue highlight block (Why optimize this feature?) */
+	.highlight-block {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+		padding: var(--space-6) var(--page-gutter);
+		background: var(--color-accent-sky);
+		color: var(--color-text-on-light);
+	}
+
+	/* Generic vertical stack section, used for most body sections */
+	.stack-section {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+		padding: var(--space-6) var(--page-gutter);
+		border-bottom: 2px solid var(--color-light);
+	}
+
+	.section-intro {
+		text-align: left;
+		font-size: var(--text-h3-size);
+		padding: var(--space-3) var(--page-gutter);
+		margin: 0;
+	}
+
+	/* Wisdom points rows (bullets + quotes side by side) */
+	.wisdom-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-4);
+	}
+
+	.wisdom-list {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+		padding: var(--space-4) 0;
+		margin: 0;
+		border-top: 0.5px solid currentColor;
+		border-bottom: 0.5px solid currentColor;
+		padding-left: var(--space-4);
+	}
+
+	.quote-list {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+	}
+
+	.quote-list p {
+		margin: 0;
+	}
+
+	.callout-box {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding: var(--space-4);
+		border-radius: 10px;
+		border: 1px solid currentColor;
+		text-align: left;
+	}
+
+	.rounded-image {
+		border-radius: 10px;
+	}
+
+	.callout-box--outline {
+		flex-direction: column;
+		align-items: flex-start;
+		text-align: left;
+		gap: var(--space-2);
+	}
+
+	.callout-box p {
+		margin: 0;
+	}
+
+	/* Personas */
+	.persona-row {
+		display: flex;
+		gap: var(--space-3);
+	}
+
+	.persona {
+		flex: 1;
+		min-width: 0;
+		aspect-ratio: 335 / 189;
+		object-fit: cover;
+		border-radius: 16px;
+		border: 1px solid;
+	}
+
+	.persona-blue {
+		border-color: #1a73e8;
+	}
+
+	.persona-red {
+		border-color: #ea4335;
+	}
+
+	.persona-green {
+		border-color: #34a853;
+	}
+
+	/* Insight cards row (card + adjacent quote) */
+	.insight-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-4);
+		align-items: center;
+	}
+
+	.insight-quote {
+		font-size: var(--text-h4-size);
+		font-weight: var(--text-body-weight-bold);
+		margin: 0;
+	}
+
+	@media (max-width: 800px) {
+		.hero,
+		.two-col,
+		.wisdom-row,
+		.insight-row {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

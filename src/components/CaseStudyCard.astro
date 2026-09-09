@@ -1,0 +1,225 @@
+---
+interface Props {
+	slug: string;
+	title: string;
+	summary: string;
+	category: string;
+	year: number;
+	ctaLabel: string;
+	coverImage?: string;
+	comingSoon?: boolean;
+}
+
+const { slug, title, summary, category, year, ctaLabel, coverImage, comingSoon = false } = Astro.props;
+---
+
+<article class="case-study-card">
+	<div class="card-body">
+		<div class="card-text">
+			<div class="text-group">
+				<h3>{title}</h3>
+				<p>{summary}</p>
+			</div>
+			{
+				comingSoon ? (
+					/* Not a link — there's nowhere to go yet, so this renders as a
+					   non-interactive element rather than a disabled-looking anchor. */
+					<span class="cta cta--disabled" aria-disabled="true">
+						<span>{ctaLabel}</span>
+						<img src="/icons/arrow-right-circle.svg" alt="" aria-hidden="true" />
+					</span>
+				) : (
+					<a class="cta" href={`/work/${slug}`}>
+						<span>{ctaLabel}</span>
+						<img src="/icons/arrow-right-circle.svg" alt="" aria-hidden="true" />
+					</a>
+				)
+			}
+		</div>
+		<div class="card-meta">
+			<p class="bold">{category}</p>
+			<span class="divider" aria-hidden="true"></span>
+			<p class="bold">{year}</p>
+		</div>
+	</div>
+	<div class:list={['card-image', { 'card-image--flush': Boolean(coverImage) }]}>
+		{
+			coverImage ? (
+				<div class="mockup-crop">
+					<img src={coverImage} alt="" />
+				</div>
+			) : (
+				<div class="placeholder" aria-hidden="true" />
+			)
+		}
+	</div>
+</article>
+
+<style>
+	.case-study-card {
+		display: flex;
+		align-items: stretch;
+		overflow: hidden;
+		border-radius: 10px;
+		background: var(--color-light);
+		color: var(--color-text-on-light);
+	}
+
+	.card-body {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		flex: 1 1 55%;
+	}
+
+	.card-text {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4); /* 24px between text group and CTA button */
+		padding: var(--space-4);
+		padding-left: 2rem; /* 32px per Figma spec — outside the scale */
+		padding-top: 2rem;
+	}
+
+	.text-group {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3); /* 16px between title and description */
+	}
+
+	.card-text h3 {
+		font-size: var(--text-h2-size);
+		font-weight: var(--text-h2-weight);
+	}
+
+	.cta {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-2);
+		align-self: flex-start;
+		padding: 0.75rem var(--space-4); /* 12px vertical per Figma spec — outside the 4/8/16px scale */
+		border: 2px solid transparent;
+		border-radius: 30px;
+		outline: none;
+		background: var(--color-dark);
+		color: var(--color-light);
+		font-weight: var(--text-body-weight-bold);
+		text-decoration: none;
+	}
+
+	/* Mouse hover: pill inverts to white bg with a dark border + dark text.
+	   Scoped with :not() so the disabled variant is excluded outright, rather
+	   than being styled and then overridden. */
+	.cta:not(.cta--disabled):hover {
+		background: var(--color-light);
+		border-color: var(--color-dark);
+		color: var(--color-dark);
+	}
+
+	/* Icon is a solid white SVG; inverting it flips it to match the dark text. */
+	.cta:not(.cta--disabled):hover img {
+		filter: invert(1);
+	}
+
+	/* Disabled: muted greys from the black shade scale, no interaction. */
+	.cta--disabled {
+		background: var(--color-dark-25);
+		color: var(--color-dark-75);
+		cursor: not-allowed;
+	}
+
+	/* Icon ships white; 69% inversion lands it on ~#505050 to match the text. */
+	.cta--disabled img {
+		filter: invert(0.69);
+	}
+
+	/* Keyboard focus (with or without hover): dashed ring with a 4px gap.
+	   Unlike the nav buttons, this ring stays dashed even when also hovered —
+	   that's what the updated Figma component specifies. */
+	.cta:focus-visible {
+		outline: 2px dashed var(--color-dark);
+		outline-offset: 4px;
+	}
+
+	.cta img {
+		width: 24px;
+		height: 24px;
+	}
+
+	.card-meta {
+		display: flex;
+		align-items: center;
+		gap: var(--space-3);
+		padding: var(--space-4);
+		background: var(--color-accent-orange);
+	}
+
+	.card-meta p {
+		margin: 0;
+		color: var(--color-dark);
+	}
+
+	.divider {
+		width: 1px;
+		align-self: stretch;
+		background: var(--color-dark);
+	}
+
+	.card-image {
+		flex: 1 1 45%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: var(--space-3) var(--space-4);
+		border-left: 1px solid var(--color-dark);
+	}
+
+	.card-image img {
+		max-width: 100%;
+		max-height: 280px;
+		object-fit: contain;
+	}
+
+	.card-image--flush {
+		align-items: flex-end;
+		padding-bottom: 0;
+	}
+
+	/* Reproduces the exact crop/pan from the Figma "Free mockup..." layer:
+	   a fixed-ratio window with the source image scaled/offset to match. */
+	.mockup-crop {
+		position: relative;
+		overflow: hidden;
+		width: 100%;
+		max-width: 281px;
+		aspect-ratio: 281 / 298;
+	}
+
+	.mockup-crop img {
+		position: absolute;
+		width: 100%;
+		height: 133.96%;
+		left: 10.26%;
+		top: -0.36%;
+		max-width: none;
+		max-height: none;
+		object-fit: unset;
+	}
+
+	.placeholder {
+		width: 100%;
+		height: 224px;
+		background: #d9d9d9;
+	}
+
+	@media (max-width: 700px) {
+		.case-study-card {
+			flex-direction: column;
+		}
+
+		.card-image {
+			border-left: none;
+			border-top: 1px solid var(--color-dark);
+		}
+	}
+</style>

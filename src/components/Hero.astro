@@ -1,0 +1,82 @@
+---
+---
+
+<section class="hero">
+	<div class="hero-copy">
+		<h1>Hi, I&rsquo;m Ali.</h1>
+		<blockquote class="pull-quote">
+			<span class="regular">I&rsquo;m an </span><strong class="highlight">inclusive product designer and researcher</strong><span
+				class="regular"
+			>
+				{' '}whose main goal is to create for those often left behind, leading to solutions that benefit everyone.</span
+			>
+		</blockquote>
+	</div>
+	<div class="hero-graphic">
+		<img src="/images/hero/ali-photo.png" alt="Portrait of Ali" />
+	</div>
+</section>
+
+<style>
+	.hero {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: stretch;
+		gap: var(--space-6);
+		padding: 0 var(--page-gutter);
+		border-bottom: 2px solid var(--color-light);
+		background: var(--color-bg);
+	}
+
+	.hero-copy {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: var(--space-4);
+	}
+
+	.pull-quote {
+		margin: 0;
+		padding: var(--space-4) 0 var(--space-4) var(--space-4);
+		border-left: 5px solid var(--color-accent-yellow);
+		font-size: var(--text-h3-size);
+		font-weight: var(--text-h3-weight-bold);
+		max-width: 33rem;
+	}
+
+	.pull-quote .regular {
+		font-weight: var(--text-body-weight-regular);
+	}
+
+	.pull-quote .highlight {
+		color: var(--color-text-on-light);
+		background: var(--color-accent-yellow);
+	}
+
+	.hero-graphic {
+		width: 100%;
+		height: 100%;
+	}
+
+	.hero-graphic img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	/* TODO: real responsive breakpoints once the mobile Figma frames exist.
+	   This is a minimal fallback so the hero doesn't break on narrow viewports. */
+	@media (max-width: 900px) {
+		.hero {
+			grid-template-columns: 1fr;
+			padding: var(--space-4);
+		}
+
+		.hero-graphic {
+			width: 100%;
+			height: auto;
+			aspect-ratio: 454 / 446;
+			margin: 0 auto;
+		}
+	}
+</style>

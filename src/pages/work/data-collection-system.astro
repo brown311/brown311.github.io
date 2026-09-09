@@ -1,0 +1,78 @@
+---
+/*
+ * SCAFFOLD — fill this in section by section.
+ * See src/pages/work/_template.astro for the full menu of available sections
+ * (feature cards, insight cards, callout boxes, quote rows, image rows, etc.)
+ * and copy the ones you need into this file.
+ *
+ * Assets go in:
+ *   public/images/case-studies/data-collection-system/
+ *   public/videos/case-studies/data-collection-system/
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyHero from '../../components/case-study/CaseStudyHero.astro';
+import CaseStudyToc from '../../components/case-study/CaseStudyToc.astro';
+import SectionDivider from '../../components/case-study/SectionDivider.astro';
+import '../../styles/case-study.css';
+
+const tocItems = [
+	{ href: '#introduction', label: 'Introduction' },
+	{ href: '#process', label: 'Process' },
+	{ href: '#outcome', label: 'Outcome' },
+];
+---
+
+<BaseLayout
+	title="Data Collection System"
+	description="Designing a streamlined data collection process for internal and external users."
+>
+	<article class="cs-page">
+		<CaseStudyHero
+			title="Designing a Streamlined Data Collection Process for Internal and External Users"
+			summary="TODO: one sentence describing what this project set out to do."
+			meta={[
+				{ label: 'Role', value: 'TODO' },
+				{ label: 'Timeline', value: 'TODO' },
+				{ label: 'Project Type', value: 'UX Design' },
+				{ label: 'Team Type', value: 'TODO' },
+				{ label: 'Year', value: '2026' },
+			]}
+		>
+			{/* TODO: add hero image or video */}
+		</CaseStudyHero>
+
+		<CaseStudyToc items={tocItems} />
+
+		<SectionDivider id="introduction" title="Introduction" />
+
+		<section class="cs-two-col">
+			<div class="cs-two-col-text">
+				<h3>TODO: sub-heading</h3>
+				<p>TODO: context on the starting point and the problem.</p>
+			</div>
+			<div class="cs-two-col-media">
+				{/* TODO: supporting image */}
+			</div>
+		</section>
+
+		<SectionDivider id="process" title="Process" />
+
+		<section class="cs-two-col">
+			<div class="cs-two-col-text">
+				<h3>TODO: sub-heading</h3>
+				<p>TODO: how you approached it.</p>
+			</div>
+			<div class="cs-two-col-media">
+				{/* TODO: supporting image */}
+			</div>
+		</section>
+
+		<SectionDivider id="outcome" title="Outcome" />
+
+		<section class="cs-stack">
+			<h2>TODO: what you made</h2>
+			<p>TODO: the result and its impact.</p>
+		</section>
+	</article>
+</BaseLayout>

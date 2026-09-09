@@ -1,0 +1,34 @@
+---
+interface Props {
+	/** Stack children vertically instead of laying them out in a row. */
+	stacked?: boolean;
+}
+
+const { stacked = false } = Astro.props;
+---
+
+<div class:list={['callout-box', { 'callout-box--stacked': stacked }]}>
+	<slot />
+</div>
+
+<style>
+	.callout-box {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding: var(--space-4);
+		border: 1px solid currentColor;
+		border-radius: 10px;
+		text-align: left;
+	}
+
+	.callout-box--stacked {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-2);
+	}
+
+	.callout-box :global(p) {
+		margin: 0;
+	}
+</style>

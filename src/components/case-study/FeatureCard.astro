@@ -1,0 +1,100 @@
+---
+interface Props {
+	title: string;
+	subtitle?: string;
+	centerText?: boolean;
+}
+
+const { title, subtitle, centerText = false } = Astro.props;
+---
+
+<div class="feature-card">
+	<div class:list={['feature-text', { 'feature-text--centered': centerText }]}>
+		<h3>{title}</h3>
+		{subtitle && <p class="subtitle">{subtitle}</p>}
+		<slot />
+	</div>
+	<div class="feature-divider" aria-hidden="true"></div>
+	<div class="feature-image">
+		<slot name="image" />
+	</div>
+</div>
+
+<style>
+	.feature-card {
+		display: flex;
+		align-items: stretch;
+		overflow: hidden;
+		border-radius: 10px;
+		background: var(--color-light);
+		color: var(--color-text-on-light);
+	}
+
+	.feature-text {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+		flex: 1 1 55%;
+		padding: var(--space-4) var(--space-4) var(--space-4) 3rem; /* 48px left per Figma spec */
+	}
+
+	.feature-text--centered {
+		justify-content: center;
+	}
+
+	.feature-text h3 {
+		font-size: var(--text-h2-size);
+		font-weight: var(--text-h2-weight);
+	}
+
+	.subtitle {
+		font-size: var(--text-h3-size);
+		font-weight: var(--text-h3-weight-bold);
+	}
+
+	.feature-text :global(ul) {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+		padding-left: var(--space-4);
+	}
+
+	.feature-divider {
+		width: 1px;
+		align-self: stretch;
+		background: var(--color-dark);
+	}
+
+	.feature-image {
+		flex: 1 1 45%;
+		min-width: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-2);
+		padding: var(--space-3) var(--space-4);
+	}
+
+	.feature-image :global(img),
+	.feature-image :global(video) {
+		min-width: 0;
+		max-width: 100%;
+		max-height: 420px;
+		object-fit: contain;
+	}
+
+	.feature-image :global(video) {
+		border-radius: 10px;
+	}
+
+	@media (max-width: 700px) {
+		.feature-card {
+			flex-direction: column;
+		}
+
+		.feature-divider {
+			width: auto;
+			height: 1px;
+		}
+	}
+</style>
