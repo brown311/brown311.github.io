@@ -33,11 +33,12 @@
 	--space-6: 4rem;
 
 	/* Page gutter used in the Figma frame's desktop layout — outside the
-	   4-64px spacing scale. Fluid: holds at 16rem (256px) from ~1280px
-	   viewports up, scales linearly down to 1rem (16px) at ~320px, so every
-	   page using it as horizontal padding stays usable on a phone instead of
-	   the fixed 256px eating the entire screen width. */
-	--page-gutter: clamp(1rem, 25vw - 4rem, 16rem);
+	   4-64px spacing scale. Fluid: sits at the 1rem (16px) floor through
+	   phone and small-tablet widths (up to ~920px, below the 900px nav
+	   breakpoint so hamburger-nav widths don't need the room anyway), then
+	   ramps up — 4rem (64px) at 1024px (iPad landscape) — reaching the full
+	   16rem (256px) desktop value at ~1440px. */
+	--page-gutter: clamp(1rem, 46vw - 25.5rem, 16rem);
 
 	/* Type scale (px values assume 1rem = 16px) */
 	--text-h1-size: 3rem; /* 48px */
