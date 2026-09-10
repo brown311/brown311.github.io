@@ -150,6 +150,16 @@ const IMG = '/images/about';
 		object-fit: unset;
 	}
 
+	/* Sections are deliberately flush (no vertical padding) on desktop, but
+	   that gets crowded once text and image are close together — and worse
+	   once they stack. Add breathing room back for anything 900px and under. */
+	@media (max-width: 900px) {
+		.two-col {
+			padding-top: var(--space-5);
+			padding-bottom: var(--space-5);
+		}
+	}
+
 	@media (max-width: 800px) {
 		.two-col {
 			grid-template-columns: 1fr;
