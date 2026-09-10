@@ -7,10 +7,11 @@ interface Props {
 	year: number;
 	ctaLabel: string;
 	coverImage?: string;
+	coverImageAlt?: string;
 	comingSoon?: boolean;
 }
 
-const { slug, title, summary, category, year, ctaLabel, coverImage, comingSoon = false } = Astro.props;
+const { slug, title, summary, category, year, ctaLabel, coverImage, coverImageAlt = '', comingSoon = false } = Astro.props;
 ---
 
 <article class="case-study-card">
@@ -46,7 +47,7 @@ const { slug, title, summary, category, year, ctaLabel, coverImage, comingSoon =
 		{
 			coverImage ? (
 				<div class="mockup-crop">
-					<img src={coverImage} alt="" />
+					<img src={coverImage} alt={coverImageAlt} />
 				</div>
 			) : (
 				<div class="placeholder" aria-hidden="true" />

@@ -24,6 +24,7 @@ const caseStudies = (await getCollection('caseStudies')).sort((a, b) => a.data.o
 					year={entry.data.year}
 					ctaLabel={entry.data.ctaLabel}
 					coverImage={entry.data.coverImage}
+					coverImageAlt={entry.data.coverImageAlt}
 					comingSoon={entry.data.comingSoon}
 				/>
 			))

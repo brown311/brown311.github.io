@@ -14,6 +14,13 @@ const VIDEO = '/videos/case-studies/google-maps';
 	description="Optimizing Information About Accessibility on Google Maps — a UX research and design capstone project."
 >
 	<article class="case-study">
+		<div class="back-button-row">
+			<a class="back-button" href="/">
+				<img src="/icons/arrow-left.svg" alt="" aria-hidden="true" />
+				Back
+			</a>
+		</div>
+
 		<header class="hero">
 			<div class="hero-text">
 				<h1>Optimizing Information About Accessibility on Google Maps</h1>
@@ -60,7 +67,7 @@ const VIDEO = '/videos/case-studies/google-maps';
 				</div>
 			</div>
 			<div class="two-col-image">
-				<img src={`${IMG}/accessible-places-context.png`} alt="" />
+				<img src={`${IMG}/accessible-places-context.png`} alt="Google Maps accessibility settings screen, showing a toggle to filter results for wheelchair-accessible places" />
 			</div>
 		</section>
 
@@ -153,7 +160,7 @@ const VIDEO = '/videos/case-studies/google-maps';
 				<p>Then analyzed the data using the DIKW Pyramid method.</p>
 			</div>
 			<div class="two-col-image">
-				<img class="rounded-image" src={`${IMG}/observational-research.png`} alt="" />
+				<img class="rounded-image" src={`${IMG}/observational-research.png`} alt="Research affinity diagram grouping observation notes into clusters like Physically Disabled, Other Disabilities, Knowledge, Wisdom, and Potential Solutions" />
 			</div>
 		</section>
 
@@ -232,7 +239,7 @@ const VIDEO = '/videos/case-studies/google-maps';
 				</p>
 			</div>
 			<div class="two-col-image">
-				<img src={`${IMG}/two-restaurants.png`} alt="" />
+				<img src={`${IMG}/two-restaurants.png`} alt="Two Google Maps restaurant listings side by side" />
 			</div>
 		</section>
 
@@ -266,7 +273,7 @@ const VIDEO = '/videos/case-studies/google-maps';
 				<p>70% of participants stated that different items could be placed in multiple categories.</p>
 			</div>
 			<div class="two-col-image">
-				<img class="rounded-image" src={`${IMG}/card-sorting-test.png`} alt="" />
+				<img class="rounded-image" src={`${IMG}/card-sorting-test.png`} alt="Card sorting test results grouping accessibility features into categories like Overview Page, About, Questions and Answers, and Photos & Videos" />
 			</div>
 		</section>
 
@@ -283,7 +290,7 @@ const VIDEO = '/videos/case-studies/google-maps';
 				<p>For this prototype test I created 1 version of missing information with the current Google Maps design and 1 with my placeholder design.</p>
 			</div>
 			<div class="two-col-image">
-				<img src={`${IMG}/placeholder-missing-info.png`} alt="" />
+				<img src={`${IMG}/placeholder-missing-info.png`} alt="Comparison of a restaurant's accessibility section with and without a placeholder that lists missing information like wheelchair-accessible seating and entrance" />
 			</div>
 		</section>
 
@@ -329,9 +336,9 @@ const VIDEO = '/videos/case-studies/google-maps';
 					<li>Reviews as a Way of Finding Information</li>
 				</ul>
 				<Fragment slot="image">
-					<img src={`${IMG}/first-test-1.png`} alt="" />
-					<img src={`${IMG}/first-test-2.png`} alt="" />
-					<img src={`${IMG}/first-test-3.png`} alt="" />
+					<img src={`${IMG}/first-test-1.png`} alt="Prototype screen showing a restaurant's reviews filtered by Accessibility, with a star rating breakdown" />
+					<img src={`${IMG}/first-test-2.png`} alt="Prototype screen for alerting a restaurant that its accessibility information is incorrect or missing" />
+					<img src={`${IMG}/first-test-3.png`} alt="Prototype screen listing a restaurant's accessibility, amenity, and parking details with an option to alert the restaurant" />
 				</Fragment>
 			</FeatureCard>
 
@@ -342,9 +349,9 @@ const VIDEO = '/videos/case-studies/google-maps';
 					<li>Review Page (Changes from the results of the 1st test)</li>
 				</ul>
 				<Fragment slot="image">
-					<img src={`${IMG}/second-test-1.png`} alt="" />
-					<img src={`${IMG}/second-test-2.png`} alt="" />
-					<img src={`${IMG}/second-test-3.png`} alt="" />
+					<img src={`${IMG}/second-test-1.png`} alt="Prototype screen showing a restaurant's reviews page with an added Accessibility filter tab alongside Overview and About" />
+					<img src={`${IMG}/second-test-2.png`} alt="Prototype screen for a dedicated Accessibility tab listing detailed entrance and bathroom features" />
+					<img src={`${IMG}/second-test-3.png`} alt="Prototype screen showing a restaurant's overview page with accessibility information prioritized near the top" />
 				</Fragment>
 			</FeatureCard>
 		</section>
@@ -383,11 +390,11 @@ const VIDEO = '/videos/case-studies/google-maps';
 				>
 					View Figma prototype
 				</BlueButton>
-				<Fragment slot="image"><img src={`${IMG}/prototype-mockup.png`} alt="" /></Fragment>
+				<Fragment slot="image"><img src={`${IMG}/prototype-mockup.png`} alt="Phone mockup of the final prototype's restaurant page, showing photos and accessibility details" /></Fragment>
 			</FeatureCard>
 		</section>
 
-		<section class="stack-section">
+		<section class="stack-section stack-section--last">
 			<h2>Reflection</h2>
 
 			<InsightCard title="This is the first capstone project I’ve ever done. It was intimidating thinking about how I would have to make a lot of decisions myself.">
@@ -417,9 +424,7 @@ const VIDEO = '/videos/case-studies/google-maps';
 				can make designs and launch them all over the world is because of these companies. They go hand in hand and
 				that is something I truly hadn&rsquo;t considered.
 			</InsightCard>
-		</section>
 
-		<section class="stack-section">
 			<h2>Next Steps</h2>
 			<InsightCard title="Next for this project I would want to do more research on accessibility needs.">
 				Having detailed and accurate information about accessibility needs would take this design to the next level.
@@ -427,6 +432,11 @@ const VIDEO = '/videos/case-studies/google-maps';
 				conduct interviews with people with different disabilities to find out what information is helpful, what
 				I&rsquo;m missing and what information is the most important.
 			</InsightCard>
+
+			<a class="back-button" href="/">
+				<img src="/icons/arrow-left.svg" alt="" aria-hidden="true" />
+				Back
+			</a>
 		</section>
 	</article>
 </BaseLayout>
@@ -451,6 +461,48 @@ const VIDEO = '/videos/case-studies/google-maps';
 
 	.h3-size {
 		font-size: var(--text-h3-size);
+	}
+
+	.back-button-row {
+		padding: var(--space-4) var(--page-gutter) var(--space-3);
+	}
+
+	/* Same square-button pattern as the nav (fill-invert on hover, dashed
+	   outline on focus) so it reads as part of the same design system. */
+	.back-button {
+		display: inline-flex;
+		align-items: center;
+		align-self: flex-start;
+		gap: var(--space-2);
+		padding: 0.75rem var(--space-4);
+		border: 2px solid transparent;
+		border-radius: 0;
+		outline: none;
+		background: transparent;
+		color: var(--color-text-on-dark);
+		font-weight: var(--text-body-weight-bold);
+		font-size: var(--text-body-size);
+		text-decoration: none;
+	}
+
+	.back-button img {
+		width: 24px;
+		height: 24px;
+	}
+
+	.back-button:hover {
+		background: var(--color-light);
+		border-color: var(--color-light);
+		color: var(--color-text-on-light);
+	}
+
+	.back-button:hover img {
+		filter: invert(1);
+	}
+
+	.back-button:focus-visible {
+		outline: 2px dashed var(--color-light);
+		outline-offset: 4px;
 	}
 
 	/* Hero */
@@ -588,6 +640,12 @@ const VIDEO = '/videos/case-studies/google-maps';
 		gap: var(--space-4);
 		padding: var(--space-6) var(--page-gutter);
 		border-bottom: 2px solid var(--color-light);
+	}
+
+	/* The footer already has its own top border, so the last section on the
+	   page doesn't need one too. */
+	.stack-section--last {
+		border-bottom: none;
 	}
 
 	.section-intro {
