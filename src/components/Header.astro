@@ -16,7 +16,13 @@ function isActive(href: string) {
 
 <header class="site-header">
 	<a class="wordmark" href="/">Ali&rsquo;s Portfolio</a>
-	<nav>
+
+	<button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-nav">
+		<span class="menu-icon" aria-hidden="true"></span>
+		<span class="sr-only">Menu</span>
+	</button>
+
+	<nav id="site-nav">
 		<ul>
 			{
 				navItems.map((item) => (
@@ -67,6 +73,73 @@ function isActive(href: string) {
 		outline: 2px dashed var(--color-light);
 		outline-offset: 4px;
 	}
+
+	/* ---------- Hamburger toggle: hidden on desktop, shown under 900px ---------- */
+
+	.menu-toggle {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		padding: 0;
+		border: 2px solid transparent;
+		outline: none;
+		background: none;
+		cursor: pointer;
+	}
+
+	.menu-toggle:hover {
+		border-color: var(--color-light);
+	}
+
+	.menu-toggle:focus-visible {
+		outline: 2px dashed var(--color-light);
+		outline-offset: 4px;
+	}
+
+	/* Three bars that collapse into an X when open — no icon asset needed. */
+	.menu-icon,
+	.menu-icon::before,
+	.menu-icon::after {
+		display: block;
+		width: 24px;
+		height: 2px;
+		background: var(--color-light);
+		transition:
+			transform 0.15s ease,
+			opacity 0.15s ease;
+	}
+
+	.menu-icon::before,
+	.menu-icon::after {
+		content: '';
+		position: relative;
+	}
+
+	.menu-icon::before {
+		top: -7px;
+	}
+
+	.menu-icon::after {
+		top: -9px;
+	}
+
+	.menu-toggle[aria-expanded='true'] .menu-icon {
+		background: transparent;
+	}
+
+	.menu-toggle[aria-expanded='true'] .menu-icon::before {
+		top: 0;
+		transform: rotate(45deg);
+	}
+
+	.menu-toggle[aria-expanded='true'] .menu-icon::after {
+		top: -2px;
+		transform: rotate(-45deg);
+	}
+
+	/* ---------- Nav ---------- */
 
 	nav > ul {
 		display: flex;
@@ -125,4 +198,89 @@ function isActive(href: string) {
 		border-style: solid;
 		border-color: var(--color-light);
 	}
+
+	/* ---------- Mobile: collapse nav into a toggleable panel ---------- */
+
+	@media (max-width: 900px) {
+		.menu-toggle {
+			display: inline-flex;
+		}
+
+		nav {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			background: var(--color-bg);
+			border-bottom: 2px solid var(--color-light);
+		}
+
+		nav:not(.is-open) {
+			display: none;
+		}
+
+		nav > ul {
+			flex-direction: column;
+			gap: 0;
+			padding: var(--space-3) var(--page-gutter) var(--space-4);
+		}
+
+		.nav-btn {
+			width: 100%;
+			justify-content: flex-start;
+		}
+
+		.site-header {
+			position: relative;
+		}
+	}
 </style>
+
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>('#menu-toggle');
+	const nav = document.querySelector<HTMLElement>('#site-nav');
+
+	function closeMenu() {
+		if (!toggle || !nav) return;
+		toggle.setAttribute('aria-expanded', 'false');
+		nav.classList.remove('is-open');
+	}
+
+	function openMenu() {
+		if (!toggle || !nav) return;
+		toggle.setAttribute('aria-expanded', 'true');
+		nav.classList.add('is-open');
+	}
+
+	toggle?.addEventListener('click', () => {
+		const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+		if (isOpen) closeMenu();
+		else openMenu();
+	});
+
+	// Tapping a nav link closes the panel rather than leaving it open behind
+	// the page that just navigated.
+	nav?.querySelectorAll('a').forEach((link) => {
+		link.addEventListener('click', () => closeMenu());
+	});
+
+	document.addEventListener('click', (event) => {
+		if (!toggle || !nav) return;
+		const target = event.target as Node;
+		if (!toggle.contains(target) && !nav.contains(target)) closeMenu();
+	});
+
+	document.addEventListener('keydown', (event) => {
+		if (event.key === 'Escape') {
+			closeMenu();
+			toggle?.focus();
+		}
+	});
+
+	// If the viewport grows past the mobile breakpoint while the panel is
+	// open (e.g. rotating a tablet), don't leave it stuck open.
+	const mobileQuery = window.matchMedia('(max-width: 900px)');
+	mobileQuery.addEventListener('change', (event) => {
+		if (!event.matches) closeMenu();
+	});
+</script>

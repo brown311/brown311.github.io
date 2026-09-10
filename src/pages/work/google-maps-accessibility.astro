@@ -698,5 +698,12 @@ const VIDEO = '/videos/case-studies/google-maps';
 		.insight-row {
 			grid-template-columns: 1fr;
 		}
+
+		/* These are full document thumbnails, not simple photos — at 1/3
+		   width on a phone the text inside becomes illegible, so stack them
+		   instead of shrinking them. */
+		.persona-row {
+			flex-direction: column;
+		}
 	}
 </style>
