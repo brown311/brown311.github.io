@@ -49,6 +49,12 @@ const { slug, title, summary, category, year, ctaLabel, coverImage, coverImageAl
 				<div class="mockup-crop">
 					<img src={coverImage} alt={coverImageAlt} />
 				</div>
+			) : comingSoon ? (
+				<img
+					class="coming-soon-img"
+					src="/images/case-studies/coming-soon.svg"
+					alt="Rough illustration reading 'Coming soon...' with a scribbled loading bar underneath."
+				/>
 			) : (
 				<div class="placeholder" aria-hidden="true" />
 			)
@@ -211,6 +217,13 @@ const { slug, title, summary, category, year, ctaLabel, coverImage, coverImageAl
 		width: 100%;
 		height: 224px;
 		background: #d9d9d9;
+	}
+
+	.coming-soon-img {
+		width: 100%;
+		max-width: 281px;
+		height: 224px;
+		object-fit: contain;
 	}
 
 	@media (max-width: 700px) {
