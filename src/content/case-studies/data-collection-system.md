@@ -1,5 +1,5 @@
 ---
-title: Designing a Streamlined Data Collection Process for Internal and External Users
+title: Designing a Streamlined Data Collection Process
 year: 2026
 category: UX Design
 tags: [accessibility, systems design]

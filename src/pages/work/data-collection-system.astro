@@ -17,7 +17,7 @@ import BackButton from '../../components/case-study/BackButton.astro';
 import '../../styles/case-study.css';
 
 const tocItems = [
-	{ href: '#introduction', label: 'Introduction' },
+	{ href: '#the-problem', label: 'The Problem' },
 	{ href: '#the-solution', label: 'The Solution' },
 	{ href: '#process', label: 'Process' },
 	{ href: '#outcomes', label: 'Outcomes' },
@@ -34,7 +34,7 @@ const tocItems = [
 		</div>
 
 		<CaseStudyHero
-			title="Designing a Streamlined Data Collection Process for Internal and External Users"
+			title="Designing a Streamlined Data Collection Process"
 			summary="I designed a system that replaced two disconnected survey tools with a single, self-service way for Fable's testers to answer dynamic profile questions, freeing the internal team from manually reconciling data and generating surveys by hand."
 			meta={[
 				{ label: 'Role', value: 'Junior UX Designer' },
@@ -49,66 +49,57 @@ const tocItems = [
 
 		<CaseStudyToc items={tocItems} />
 
-		<SectionDivider id="introduction" title="Introduction" />
-
-		<p class="cs-section-intro">
-			Fable Tech Labs runs a panel of testers (people with disabilities who use assistive technology) so clients can
-			test the accessibility of their products with real users. Managing that panel meant collecting two kinds of
-			data: static profile details (name, assistive technology type, location) and dynamic details needed to match
-			testers to specific client needs, like which app they use or what skills they have. That dynamic data lived
-			across two disconnected survey tools, creating friction for both the internal team and testers. I designed a
-			system that let the internal team build and manage custom questions directly in the Fable platform, and gave
-			testers a single place to answer them at their own pace.
-		</p>
+		<SectionDivider id="the-problem" title="The Problem" />
 
 		<section class="cs-two-col">
 			<div class="cs-two-col-text">
 				<h3>Fable's Panel of Testers</h3>
 				<p>
-					Fable's internal team recruits, trains, and manages a panel of testers — people with disabilities who use
-					different assistive technologies — so Fable's clients can test the accessibility of their websites and apps
+					Fable's internal team recruits, trains, and manages a panel of testers (people with disabilities who use
+					different assistive technologies) so Fable's clients can test the accessibility of their websites and apps
 					with real users.
 				</p>
 				<p>
-					The Fable platform already tracked static tester information: name, assistive technology type, location.
-					But client matching often depends on more specific, changeable data — for example, whether a tester uses a
+					The Fable platform already tracked static information about the testers.
+					But clients sometimes depended on more specific, changeable data, for example, whether a tester uses a
 					particular app or has a particular skill.
 				</p>
 			</div>
+			<div class="cs-two-col-media">
+				<img
+					class="cs-rounded"
+					src="/images/case-studies/data-collection-system/AT.avif"
+					alt="A Freedom Scientific refreshable braille display with blue buttons and a row of braille cells, connected to an open laptop on a desk"
+				/>
+			</div>
 		</section>
 
-		<section class="cs-two-col">
-			<div class="cs-two-col-text">
-				<h3>No Central System for Dynamic Data</h3>
-				<p>
-					These dynamic questions changed often, needed regular updates, and varied in priority — unlike the fixed,
-					hardcoded fields (like assistive technology type) the platform was built around. As a result, this data was
-					collected two ways: through ongoing surveys inside the Fable platform, and through a separate external
-					survey tool. There was no single place where it all lived.
-				</p>
-			</div>
-			<div class="cs-two-col-media">
-				{/* TODO: add screenshot — flowchart of the current, fragmented data collection process */}
-			</div>
+		<section class="cs-highlight">
+			<h3>No Central System for Dynamic Data</h3>
+			<p>
+				These dynamic questions changed often, needed regular updates, and varied in priority — unlike the fixed,
+				hardcoded fields (like assistive technology type) the platform was built around. As a result, these data was
+				collected two ways: through ongoing surveys inside the Fable platform, and through a separate external
+				survey tool. There was no single place where it all lived.
+			</p>
+			{/* TODO: add screenshot — flowchart of the current, fragmented data collection process */}
 		</section>
 
 		<section class="cs-stack">
 			<h3>That split created friction on both sides</h3>
-			<div class="cs-row">
-				<div>
+			<div class="cs-row friction-row">
+				<div class="friction-col">
 					<p class="cs-bold">For the internal team</p>
 					<ul class="cs-rule-list">
-						<li>Data lived in different places, tracked manually across two survey tools</li>
-						<li>Survey answers weren't connected to the tester's profile, so the team had to view static and dynamic data separately</li>
-						<li>Keeping track of which surveys had gone out, and reviewing results in a table disconnected from the rest of a tester's profile, was hard to manage</li>
+						<li><strong class="highlight">Data lived in different places</strong>, tracked manually across two survey tools</li>
+						<li><strong class="highlight">Survey answers weren't connected to the tester's profile</strong>, so the team had to view static and dynamic data separately</li>
 					</ul>
 				</div>
-				<div>
+				<div class="friction-col">
 					<p class="cs-bold">For testers</p>
 					<ul class="cs-rule-list">
-						<li>They sometimes had to re-answer questions they'd already answered, with no explanation why</li>
-						<li>They had no control over when they could respond — they had to wait for a survey to be sent</li>
-						<li>They had to navigate multiple places to answer questions, which was especially confusing during onboarding</li>
+						<li>They sometimes had to re-answer questions they'd already answered, <strong class="highlight">with no explanation why</strong></li>
+						<li><strong class="highlight">They had to navigate multiple places to answer questions</strong>, which was especially confusing during onboarding</li>
 					</ul>
 				</div>
 			</div>
@@ -116,12 +107,12 @@ const tocItems = [
 
 		<SectionDivider id="the-solution" title="The Solution" />
 
-		<p class="cs-section-intro">
-			I designed a system that let the internal team program questions for testers to answer on their own time,
-			replacing the two-tool survey process with one connected experience.
+		<p class="cs-section-intro solution-intro">
+			The end result was a system that let the internal team program questions for testers,
+			replacing the two-tool survey process <strong class="highlight">with one connected experience.</strong>
 		</p>
 
-		<section class="cs-stack">
+		<section class="cs-stack solution-cards">
 			<FeatureCard
 				title="Question Builder"
 				subtitle="The internal team can now build custom questions directly in the Fable platform, which are automatically sent to testers."
@@ -246,3 +237,39 @@ const tocItems = [
 		</section>
 	</article>
 </BaseLayout>
+
+<style>
+	/* The two lists can have a different number of bullets, so stretch both
+	   columns to the row's full height and let the list grow into it —
+	   otherwise cs-row's vertical centering leaves their hairlines
+	   misaligned. */
+	.friction-row {
+		align-items: stretch;
+	}
+
+	.friction-col {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+	}
+
+	.friction-col .cs-rule-list {
+		flex: 1;
+	}
+
+	/* 32px isn't on the 4/8/16/24/40/64 spacing scale — a one-off gap above
+	   this intro line specifically. */
+	.solution-intro {
+		margin-top: 2rem;
+		padding-bottom: 0;
+	}
+
+	.solution-cards {
+		padding-top: 2rem;
+	}
+
+	.highlight {
+		color: var(--color-text-on-light);
+		background: var(--color-accent-yellow);
+	}
+</style>
