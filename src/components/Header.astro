@@ -15,7 +15,10 @@ function isActive(href: string) {
 ---
 
 <header class="site-header">
-	<a class="wordmark" href="/">Ali&rsquo;s Portfolio</a>
+	<a class="wordmark" href="/">
+		<img src="/icons/logo.svg" alt="" aria-hidden="true" />
+		Ali&rsquo;s Portfolio
+	</a>
 
 	<button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-nav">
 		<span class="menu-icon" aria-hidden="true"></span>
@@ -56,13 +59,21 @@ function isActive(href: string) {
 	}
 
 	.wordmark {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-2);
 		padding: 0.75rem var(--space-4);
 		border: 2px solid transparent;
 		outline: none;
 		color: var(--color-text-on-dark);
 		text-decoration: none;
-		font-size: var(--text-h2-size);
-		font-weight: var(--text-h2-weight);
+		font-size: var(--text-h4-size);
+		font-weight: var(--text-h4-weight);
+	}
+
+	.wordmark img {
+		width: 48px;
+		height: 48px;
 	}
 
 	.wordmark:hover {
