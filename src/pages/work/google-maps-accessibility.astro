@@ -4,6 +4,8 @@ import BlueButton from '../../components/BlueButton.astro';
 import SectionDivider from '../../components/case-study/SectionDivider.astro';
 import FeatureCard from '../../components/case-study/FeatureCard.astro';
 import InsightCard from '../../components/case-study/InsightCard.astro';
+import BackButton from '../../components/case-study/BackButton.astro';
+import '../../styles/case-study.css';
 
 const IMG = '/images/case-studies/google-maps';
 const VIDEO = '/videos/case-studies/google-maps';
@@ -14,11 +16,8 @@ const VIDEO = '/videos/case-studies/google-maps';
 	description="Optimizing Information About Accessibility on Google Maps — a UX research and design capstone project."
 >
 	<article class="case-study">
-		<div class="back-button-row">
-			<a class="back-button" href="/">
-				<img src="/icons/arrow-left.svg" alt="" aria-hidden="true" />
-				Back
-			</a>
+		<div class="cs-back-button-row">
+			<BackButton />
 		</div>
 
 		<header class="hero">
@@ -433,10 +432,7 @@ const VIDEO = '/videos/case-studies/google-maps';
 				I&rsquo;m missing and what information is the most important.
 			</InsightCard>
 
-			<a class="back-button" href="/">
-				<img src="/icons/arrow-left.svg" alt="" aria-hidden="true" />
-				Back
-			</a>
+			<BackButton />
 		</section>
 	</article>
 </BaseLayout>
@@ -461,48 +457,6 @@ const VIDEO = '/videos/case-studies/google-maps';
 
 	.h3-size {
 		font-size: var(--text-h3-size);
-	}
-
-	.back-button-row {
-		padding: var(--space-4) var(--page-gutter) var(--space-3);
-	}
-
-	/* Same square-button pattern as the nav (fill-invert on hover, dashed
-	   outline on focus) so it reads as part of the same design system. */
-	.back-button {
-		display: inline-flex;
-		align-items: center;
-		align-self: flex-start;
-		gap: var(--space-2);
-		padding: 0.75rem var(--space-4);
-		border: 2px solid transparent;
-		border-radius: 0;
-		outline: none;
-		background: transparent;
-		color: var(--color-text-on-dark);
-		font-weight: var(--text-body-weight-bold);
-		font-size: var(--text-body-size);
-		text-decoration: none;
-	}
-
-	.back-button img {
-		width: 24px;
-		height: 24px;
-	}
-
-	.back-button:hover {
-		background: var(--color-light);
-		border-color: var(--color-light);
-		color: var(--color-text-on-light);
-	}
-
-	.back-button:hover img {
-		filter: invert(1);
-	}
-
-	.back-button:focus-visible {
-		outline: 2px dashed var(--color-light);
-		outline-offset: 4px;
 	}
 
 	/* Hero */

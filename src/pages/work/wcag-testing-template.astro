@@ -14,6 +14,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CaseStudyHero from '../../components/case-study/CaseStudyHero.astro';
 import CaseStudyToc from '../../components/case-study/CaseStudyToc.astro';
 import SectionDivider from '../../components/case-study/SectionDivider.astro';
+import BackButton from '../../components/case-study/BackButton.astro';
 import '../../styles/case-study.css';
 
 const tocItems = [
@@ -28,6 +29,10 @@ const tocItems = [
 	description="Designing a flexible template for accessibility testing."
 >
 	<article class="cs-page">
+		<div class="cs-back-button-row">
+			<BackButton />
+		</div>
+
 		<CaseStudyHero
 			title="Designing a Flexible Template for Accessibility Testing"
 			summary="TODO: one sentence describing what this project set out to do."
@@ -70,9 +75,11 @@ const tocItems = [
 
 		<SectionDivider id="outcome" title="Outcome" />
 
-		<section class="cs-stack">
+		<section class="cs-stack cs-stack--last">
 			<h2>TODO: what you made</h2>
 			<p>TODO: the result and its impact.</p>
+
+			<BackButton />
 		</section>
 	</article>
 </BaseLayout>

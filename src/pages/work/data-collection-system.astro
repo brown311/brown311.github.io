@@ -1,25 +1,26 @@
 ---
 /*
- * SCAFFOLD — fill this in section by section.
- * See src/pages/work/_template.astro for the full menu of available sections
- * (feature cards, insight cards, callout boxes, quote rows, image rows, etc.)
- * and copy the ones you need into this file.
- *
  * Assets go in:
  *   public/images/case-studies/data-collection-system/
  *   public/videos/case-studies/data-collection-system/
+ * Screenshots referenced below aren't in yet — each spot is marked with a
+ * TODO comment describing what goes there.
  */
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CaseStudyHero from '../../components/case-study/CaseStudyHero.astro';
 import CaseStudyToc from '../../components/case-study/CaseStudyToc.astro';
 import SectionDivider from '../../components/case-study/SectionDivider.astro';
+import FeatureCard from '../../components/case-study/FeatureCard.astro';
+import InsightCard from '../../components/case-study/InsightCard.astro';
+import BackButton from '../../components/case-study/BackButton.astro';
 import '../../styles/case-study.css';
 
 const tocItems = [
 	{ href: '#introduction', label: 'Introduction' },
+	{ href: '#the-solution', label: 'The Solution' },
 	{ href: '#process', label: 'Process' },
-	{ href: '#outcome', label: 'Outcome' },
+	{ href: '#outcomes', label: 'Outcomes' },
 ];
 ---
 
@@ -28,14 +29,18 @@ const tocItems = [
 	description="Designing a streamlined data collection process for internal and external users."
 >
 	<article class="cs-page">
+		<div class="cs-back-button-row">
+			<BackButton />
+		</div>
+
 		<CaseStudyHero
 			title="Designing a Streamlined Data Collection Process for Internal and External Users"
-			summary="TODO: one sentence describing what this project set out to do."
+			summary="I designed a system that replaced two disconnected survey tools with a single, self-service way for Fable's testers to answer dynamic profile questions, freeing the internal team from manually reconciling data and generating surveys by hand."
 			meta={[
-				{ label: 'Role', value: 'TODO' },
-				{ label: 'Timeline', value: 'TODO' },
+				{ label: 'Role', value: 'Junior UX Designer' },
+				{ label: 'Timeline', value: '1 month' },
 				{ label: 'Project Type', value: 'UX Design' },
-				{ label: 'Team Type', value: 'TODO' },
+				{ label: 'Team Type', value: '2 developers, 1 product manager, 1 designer (me)' },
 				{ label: 'Year', value: '2026' },
 			]}
 		>
@@ -46,33 +51,198 @@ const tocItems = [
 
 		<SectionDivider id="introduction" title="Introduction" />
 
+		<p class="cs-section-intro">
+			Fable Tech Labs runs a panel of testers (people with disabilities who use assistive technology) so clients can
+			test the accessibility of their products with real users. Managing that panel meant collecting two kinds of
+			data: static profile details (name, assistive technology type, location) and dynamic details needed to match
+			testers to specific client needs, like which app they use or what skills they have. That dynamic data lived
+			across two disconnected survey tools, creating friction for both the internal team and testers. I designed a
+			system that let the internal team build and manage custom questions directly in the Fable platform, and gave
+			testers a single place to answer them at their own pace.
+		</p>
+
 		<section class="cs-two-col">
 			<div class="cs-two-col-text">
-				<h3>TODO: sub-heading</h3>
-				<p>TODO: context on the starting point and the problem.</p>
+				<h3>Fable's Panel of Testers</h3>
+				<p>
+					Fable's internal team recruits, trains, and manages a panel of testers — people with disabilities who use
+					different assistive technologies — so Fable's clients can test the accessibility of their websites and apps
+					with real users.
+				</p>
+				<p>
+					The Fable platform already tracked static tester information: name, assistive technology type, location.
+					But client matching often depends on more specific, changeable data — for example, whether a tester uses a
+					particular app or has a particular skill.
+				</p>
+			</div>
+		</section>
+
+		<section class="cs-two-col">
+			<div class="cs-two-col-text">
+				<h3>No Central System for Dynamic Data</h3>
+				<p>
+					These dynamic questions changed often, needed regular updates, and varied in priority — unlike the fixed,
+					hardcoded fields (like assistive technology type) the platform was built around. As a result, this data was
+					collected two ways: through ongoing surveys inside the Fable platform, and through a separate external
+					survey tool. There was no single place where it all lived.
+				</p>
 			</div>
 			<div class="cs-two-col-media">
-				{/* TODO: supporting image */}
+				{/* TODO: add screenshot — flowchart of the current, fragmented data collection process */}
 			</div>
+		</section>
+
+		<section class="cs-stack">
+			<h3>That split created friction on both sides</h3>
+			<div class="cs-row">
+				<div>
+					<p class="cs-bold">For the internal team</p>
+					<ul class="cs-rule-list">
+						<li>Data lived in different places, tracked manually across two survey tools</li>
+						<li>Survey answers weren't connected to the tester's profile, so the team had to view static and dynamic data separately</li>
+						<li>Keeping track of which surveys had gone out, and reviewing results in a table disconnected from the rest of a tester's profile, was hard to manage</li>
+					</ul>
+				</div>
+				<div>
+					<p class="cs-bold">For testers</p>
+					<ul class="cs-rule-list">
+						<li>They sometimes had to re-answer questions they'd already answered, with no explanation why</li>
+						<li>They had no control over when they could respond — they had to wait for a survey to be sent</li>
+						<li>They had to navigate multiple places to answer questions, which was especially confusing during onboarding</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<SectionDivider id="the-solution" title="The Solution" />
+
+		<p class="cs-section-intro">
+			I designed a system that let the internal team program questions for testers to answer on their own time,
+			replacing the two-tool survey process with one connected experience.
+		</p>
+
+		<section class="cs-stack">
+			<FeatureCard
+				title="Question Builder"
+				subtitle="The internal team can now build custom questions directly in the Fable platform, which are automatically sent to testers."
+			>
+				<ul>
+					<li>Supports multiple choice, single choice, open text, and branching questions</li>
+					<li>Questions can have an expiration date, prompting testers to give an updated response</li>
+					<li>The team can set question priority — for example, surfacing certain questions during onboarding when recruiting for a specific need</li>
+				</ul>
+				<Fragment slot="image">{/* TODO: add screenshot — question builder interface */}</Fragment>
+			</FeatureCard>
+
+			<FeatureCard title="A Questions Section on the Tester Profile" subtitle="Testers get a dedicated space to view every question and their answers.">
+				<ul>
+					<li>A single page shows which questions are answered and which need a new or updated response</li>
+					<li>Unanswered or outdated questions surface in two places — the tester's profile and their homepage — with a button to answer everything in one survey-style flow</li>
+					<li>When a response needs updating, the profile acknowledges the tester's previous answer rather than just re-asking</li>
+					<li>A progress chart shows how many questions are answered, need updating, or are still unanswered</li>
+					<li>Clear status messaging throughout: answered, needs an update, or not yet answered</li>
+				</ul>
+				<Fragment slot="image">{/* TODO: add screenshot — tester's question dashboard */}</Fragment>
+			</FeatureCard>
+
+			<FeatureCard
+				title="Data Management System"
+				subtitle="The internal team gets a table overview of all tester responses to dynamic questions, with an at-a-glance count of how many testers answered each one — plus the option to drill into an individual tester's full profile for an in-depth view."
+			>
+				<Fragment slot="image">{/* TODO: add screenshot — data management table */}</Fragment>
+			</FeatureCard>
 		</section>
 
 		<SectionDivider id="process" title="Process" />
 
 		<section class="cs-two-col">
 			<div class="cs-two-col-text">
-				<h3>TODO: sub-heading</h3>
-				<p>TODO: how you approached it.</p>
+				<h3>Understanding the Problem</h3>
+				<p>
+					I started with interviews with Fable's internal team, then mapped a user flowchart to pinpoint where the
+					friction was happening:
+				</p>
+				<ul>
+					<li>Questions were being asked at different points in the tester journey (some during onboarding, some after), which led to testers re-answering the same question so the data could live in the Fable platform</li>
+					<li>Surveys were sent either in-platform or via a link to an external tool, so both the internal team and testers had to work across two platforms</li>
+				</ul>
 			</div>
 			<div class="cs-two-col-media">
-				{/* TODO: supporting image */}
+				{/* TODO: add screenshot — user flowchart from internal team interviews */}
 			</div>
 		</section>
 
-		<SectionDivider id="outcome" title="Outcome" />
+		<section class="cs-stack">
+			<h3>Competitive Research</h3>
+			<p>
+				I looked at how other platforms encouraged users to complete their own data. Most used benefit-driven
+				language, e.g., &ldquo;Complete your profile to be eligible for more opportunities.&rdquo;
+			</p>
+		</section>
 
 		<section class="cs-stack">
-			<h2>TODO: what you made</h2>
-			<p>TODO: the result and its impact.</p>
+			<h3>Work Distribution</h3>
+			<p>
+				Working closely with the developers and product manager, we split the work by timeline: developers led the
+				question builder (with my input), and I focused on the tester-facing experience.
+			</p>
+		</section>
+
+		<section class="cs-stack">
+			<h3>User Interviews with Testers</h3>
+			<p>I interviewed testers to understand their current experience answering these questions.</p>
+			<ul>
+				<li>Based on the competitive research, I initially assumed framing answers around eligibility (&ldquo;this increases your chances&rdquo;) would work well</li>
+				<li>But testers told me that framing added pressure — especially when their honest answer was &ldquo;no.&rdquo; I had to balance motivating language with not making testers feel penalized for their answers</li>
+				<li>I also learned that testers generally liked filling out surveys, which meant I could lean on our existing survey pattern rather than reinvent it</li>
+			</ul>
+		</section>
+
+		<section class="cs-two-col">
+			<div class="cs-two-col-text">
+				<h3>Iteration 1</h3>
+				<p>My first design included:</p>
+				<ul>
+					<li>A list of questions testers could answer, edit, and review</li>
+					<li>Text at the top flagging any unanswered questions</li>
+					<li>A call-to-action button that opened all unanswered questions in a survey format</li>
+				</ul>
+			</div>
+			<div class="cs-two-col-media">
+				{/* TODO: add screenshot — Iteration 1 wireframe */}
+			</div>
+		</section>
+
+		<section class="cs-stack cs-on-light">
+			<h3>Feedback & Iteration 2</h3>
+			<p>Two issues came out of feedback on Iteration 1:</p>
+			{/* TODO: add screenshot — Iteration 2 with progress chart */}
+			<InsightCard title="Questions needed branching.">
+				For example, a &ldquo;no&rdquo; answer might need no follow-up, while a &ldquo;yes&rdquo; might need
+				clarifying questions. In Iteration 1, each question lived on its own card — I redesigned each card to work
+				as either a standalone question or a self-contained mini-survey, so branching stayed grouped with its
+				parent question.
+			</InsightCard>
+			<InsightCard title="Finishing didn't feel satisfying.">
+				The unanswered-question count at the top of the page simply disappeared once everything was answered, with
+				no sense of completion. I replaced it with a progress chart showing how many questions were answered,
+				needed updating, or were still unanswered. I also added the date a tester last answered an expiring
+				question, after feedback that testers wanted that context when asked to update a response.
+			</InsightCard>
+		</section>
+
+		<SectionDivider id="outcomes" title="Outcomes" />
+
+		<section class="cs-stack cs-stack--last">
+			<p class="cs-h4-size">
+				The new system removed two of the biggest manual burdens from the internal team's workflow:
+			</p>
+			<ul>
+				<li>They no longer needed to manually cross-reference two separate survey tools to see a tester's full picture — static and dynamic data now live together in one profile</li>
+				<li>They no longer needed to manually build and send out surveys to keep tester data current — the question builder handles this automatically, with expiration dates prompting testers for updates on its own</li>
+			</ul>
+
+			<BackButton />
 		</section>
 	</article>
 </BaseLayout>

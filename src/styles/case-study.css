@@ -7,6 +7,16 @@
 	background: var(--color-bg);
 }
 
+.cs-back-button-row {
+	padding: var(--space-4) var(--page-gutter) var(--space-3);
+}
+
+/* The footer already has its own top border, so the last section on the
+   page doesn't need one too. */
+.cs-stack--last {
+	border-bottom: none;
+}
+
 /* ---------- Section containers ---------- */
 
 /* Two columns: text on one side, media on the other. */

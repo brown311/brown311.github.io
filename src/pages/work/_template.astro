@@ -38,6 +38,7 @@ import SectionDivider from '../../components/case-study/SectionDivider.astro';
 import FeatureCard from '../../components/case-study/FeatureCard.astro';
 import InsightCard from '../../components/case-study/InsightCard.astro';
 import CalloutBox from '../../components/case-study/CalloutBox.astro';
+import BackButton from '../../components/case-study/BackButton.astro';
 import '../../styles/case-study.css';
 
 // Point these at your own asset folders.
@@ -54,6 +55,11 @@ const tocItems = [
 
 <BaseLayout title="Case study title" description="One sentence describing this case study.">
 	<article class="cs-page">
+		{/* ---------- BACK BUTTON: links back home ---------- */}
+		<div class="cs-back-button-row">
+			<BackButton />
+		</div>
+
 		{/* ---------- HERO: title, summary quote, project facts, media ---------- */}
 		<CaseStudyHero
 			title="Case study title"
@@ -232,9 +238,14 @@ const tocItems = [
 			</InsightCard>
 		</section>
 
-		<section class="cs-stack">
+		{/* `cs-stack--last` drops the border-bottom line — the footer already
+		    has its own top border, so the last section doesn't need one too. */}
+		<section class="cs-stack cs-stack--last">
 			<h2>Next Steps</h2>
 			<InsightCard title="Where you'd take this next.">Why, and what it would unlock.</InsightCard>
+
+			{/* ---------- BACK BUTTON: links back home ---------- */}
+			<BackButton />
 		</section>
 	</article>
 </BaseLayout>

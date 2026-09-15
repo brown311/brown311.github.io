@@ -1,0 +1,52 @@
+---
+interface Props {
+	href?: string;
+}
+
+const { href = '/' } = Astro.props;
+---
+
+<a class="cs-back-button" href={href}>
+	<img src="/icons/arrow-left.svg" alt="" aria-hidden="true" />
+	Back
+</a>
+
+<style>
+	/* Same square-button pattern as the nav (fill-invert on hover, dashed
+	   outline on focus) so it reads as part of the same design system. */
+	.cs-back-button {
+		display: inline-flex;
+		align-items: center;
+		align-self: flex-start;
+		gap: var(--space-2);
+		padding: 0.75rem var(--space-4);
+		border: 2px solid transparent;
+		border-radius: 0;
+		outline: none;
+		background: transparent;
+		color: var(--color-text-on-dark);
+		font-weight: var(--text-body-weight-bold);
+		font-size: var(--text-body-size);
+		text-decoration: none;
+	}
+
+	.cs-back-button img {
+		width: 24px;
+		height: 24px;
+	}
+
+	.cs-back-button:hover {
+		background: var(--color-light);
+		border-color: var(--color-light);
+		color: var(--color-text-on-light);
+	}
+
+	.cs-back-button:hover img {
+		filter: invert(1);
+	}
+
+	.cs-back-button:focus-visible {
+		outline: 2px dashed var(--color-light);
+		outline-offset: 4px;
+	}
+</style>
