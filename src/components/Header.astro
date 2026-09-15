@@ -19,7 +19,7 @@ function isActive(href: string) {
 
 	<button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-nav">
 		<span class="menu-icon" aria-hidden="true"></span>
-		<span class="sr-only">Menu</span>
+		<span class="menu-label">Menu</span>
 	</button>
 
 	<nav id="site-nav">
@@ -80,13 +80,22 @@ function isActive(href: string) {
 		display: none;
 		align-items: center;
 		justify-content: center;
-		width: 44px;
-		height: 44px;
-		padding: 0;
+		gap: var(--space-2);
+		min-width: 44px;
+		min-height: 44px;
+		padding: var(--space-2) var(--space-3);
 		border: 2px solid transparent;
 		outline: none;
 		background: none;
+		color: var(--color-text-on-dark);
+		font-weight: var(--text-body-weight-bold);
+		font-size: var(--text-body-size);
+		font-family: inherit;
 		cursor: pointer;
+	}
+
+	.menu-label {
+		white-space: nowrap;
 	}
 
 	.menu-toggle:hover {
@@ -239,17 +248,23 @@ function isActive(href: string) {
 <script>
 	const toggle = document.querySelector<HTMLButtonElement>('#menu-toggle');
 	const nav = document.querySelector<HTMLElement>('#site-nav');
+	const menuLabel = toggle?.querySelector<HTMLElement>('.menu-label');
 
 	function closeMenu() {
 		if (!toggle || !nav) return;
 		toggle.setAttribute('aria-expanded', 'false');
 		nav.classList.remove('is-open');
+		if (menuLabel) menuLabel.textContent = 'Menu';
 	}
 
 	function openMenu() {
 		if (!toggle || !nav) return;
 		toggle.setAttribute('aria-expanded', 'true');
 		nav.classList.add('is-open');
+		if (menuLabel) menuLabel.textContent = 'Close';
+		// Send keyboard/screen-reader focus straight into the panel rather
+		// than leaving it stranded on the toggle button.
+		nav.querySelector<HTMLElement>('a, button')?.focus();
 	}
 
 	toggle?.addEventListener('click', () => {
